@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Text, View } from "react-native";
 
 export default function GitHubGet() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [data, setData] = useState(0);
+  const [data, setData] = useState(null);
 
   const getData = async () => {
     setLoading(true);
@@ -22,7 +22,20 @@ export default function GitHubGet() {
 
   return (
     <View>
-      <Button title="Get data" onPress={getData} disabled={loading} />
+      <View
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-evenly",
+        }}
+      >
+        <Button title="Get data" onPress={getData} disabled={loading} />
+        <Button
+          title="Clear"
+          onPress={() => setData(null)}
+          disabled={loading || !data}
+        />
+      </View>
       {loading && <Text>Loading...</Text>}
       {!loading && error && <Text>{JSON.stringify(loading)}</Text>}
       {!loading && !error && <Text>{JSON.stringify(data)}</Text>}
