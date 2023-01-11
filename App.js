@@ -25,8 +25,8 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import Counter from './src/Counter';
-import GitHubGet from './src/GitHubGet';
+import Counter from './src/components/Counter';
+import GitHubGet from './src/components/GitHubGet';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
