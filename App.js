@@ -27,9 +27,8 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import { Provider } from 'react-redux';
 import store from "./src/store";
-import ReduxStoreState from './src/components/ReduxStoreState';
-import Counter from './src/components/Counter';
-import GitHubGet from './src/components/GitHubGet';
+import FirstApp from './src/pages/FirstApp';
+import SecondAppWiFi from './src/pages/SecondAppWiFi';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -78,9 +77,7 @@ const App: () => Node = () => {
           style={backgroundStyle}
         >
           <Header />
-          <ReduxStoreState />
-          <Counter />
-          <GitHubGet />
+          <FirstApp />
           <View
             style={{
               backgroundColor: isDarkMode ? Colors.black : Colors.white,
