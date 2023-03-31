@@ -7,6 +7,7 @@ export default function SecondAppWiFi() {
 
   const [wifiInfo, setWifiInfo] = useState("");
   const [hotspotInfo, setHotspotInfo] = useState("");
+  const [wifiList, setWifiList] = useState("");
 
   const getCurrentWifiInfo = async () => {
     try {
@@ -26,12 +27,32 @@ export default function SecondAppWiFi() {
     }
   };
 
+  const getAllWifiInfo = async () => {
+    try {
+      const wifiList = await WifiManager.loadWifiList();
+      setWifiList(wifiList);
+      const networks = wifiList.map((network) => ({
+        SSID: network.SSID,
+        BSSID: network.BSSID,
+        capabilities: network.capabilities,
+        frequency: network.frequency,
+        level: network.level,
+        timestamp: network.timestamp,
+      }));
+      console.log(networks);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <View>
       <Text>{wifiInfo || "Nothing here"}</Text>
       <Button onPress={getCurrentWifiInfo} title="Get Current WiFi Info" />
       <Text>{hotspotInfo || "Nothing here"}</Text>
       <Button onPress={getHotspotInfo} title="Get Hotspot Info" />
+      <Text>{JSON.stringify(wifiList) || "Nothing here"}</Text>
+      <Button title="Get All WiFi Info" onPress={getAllWifiInfo} />
     </View>
   );
 }
