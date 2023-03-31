@@ -28,7 +28,7 @@ import {
 import { Provider } from 'react-redux';
 import store from "./src/store";
 import FirstApp from './src/pages/FirstApp';
-import SecondAppWiFi from './src/pages/SecondAppWiFi';
+import SecondAppWiFi from './src/pages/SecondAppWifi';
 
 /* $FlowFixMe[missing-local-annot] The type annotation(s) required by Flow's
  * LTI update could not be added via codemod */
@@ -77,7 +77,8 @@ const App: () => Node = () => {
           style={backgroundStyle}
         >
           <Header />
-          <FirstApp />
+          {/* <FirstApp /> */}
+          <SecondAppWiFi />
           <View
             style={{
               backgroundColor: isDarkMode ? Colors.black : Colors.white,
